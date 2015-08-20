@@ -4,24 +4,31 @@
 #   Do not edit lines that say: "# Last line in ____"
 ###############################################################################
 # Imports  # there will only be one import added here.
-
+#import this
+import os
 ###############################################################################
 # Write f01 that prints "Hello World!" and calls f02. (three lines)
 def f01():
-
+    print "Hello World!"
     f02()
+
+
+
 ###############################################################################
 # Write f02 that sets the variables x, y, and z equal to the words 
 # necessary to have the f03 print "i love python!" (five lines)
-
-
-
+def f02():
+    x="i "
+    y="love "
+    z="python"
 
     f03(x,y,z)  # Last line in f2()
+
 ###############################################################################
 # Finish f03 (replace the ????). 
 def f03(*words):
-    truth = " ".???(words)  # This is broken.
+    
+    truth = " ".join(words)# This is broken.
     truth_emphasized = truth + "!"
     print truth_emphasized
     f04(truth)  # Last line in f03()
@@ -29,7 +36,7 @@ def f03(*words):
 # Write f04 that prints truth backwards (edit one line only)
 # Ex. f4("Littlest Bear") prints "raeB tselttiL"
 def f04(string):
-    
+    print(string[::-1])
     f05(string)  # Last line in f04()
 ###############################################################################
 # Write f05 that for each char in a word passed as a parameter, prints that 
@@ -41,8 +48,9 @@ def f04(string):
 #   Info
 #    Info
 def f05(word):
-
-
+    
+    for i in range(4):
+        print i*(" ")+word
 
 
 
@@ -59,9 +67,20 @@ def f05(word):
 # 'longer_string' is longer than 'short_string' by 1 chars
 # 'short_string' has only 92.31% the number of chars of longer_string
 def f06(string1, string2):
-
-
-
+    short_string = ""
+    longer_string = ""
+    if len(string1) > len(string2):
+        print "'{}'".format(string1)+" is greater than "+"'{}'".format(string2)+" by "+str(len(string1)-len(string2))+" chars"
+        short_string = string2
+        longer_string = string1
+    else:
+        print "'{}'".format(string2)+" is greater than "+"'{}'".format(string1)+" by "+str(len(string2)-len(string1))+" chars"
+        short_string = string1
+        longer_string = string2
+    percentage = float(len(short_string)/float(len(longer_string)))*100.0
+    
+    print "'{}'".format(short_string)+" has only "+str(percentage)+"% the number of chars of "+"'{}'".format(longer_string)
+    
 
 
 
@@ -83,7 +102,7 @@ def various_solutions():
     while_ = f07()
     for_ = f08()
     list_comprehension = f09()
-    recursion = f10()
+    recursion = f10(499)
     # DO NOT EDIT BELOW THIS LINE
     vals = [while_, for_, list_comprehension, recursion]
     for val in vals:
@@ -97,6 +116,14 @@ def various_solutions():
     f12()
 ###############################################################################
 def f07():
+    i = 0
+    sum = 0
+    while(i < 499):
+        if (i%3 == 0) or (i%5 == 0):
+            sum = sum + i
+        i+= 1
+    return sum
+
     
 
 
@@ -104,23 +131,34 @@ def f07():
 ###############################################################################
 def f08():
     
-
-
+    sum = 0
+    for i in range (1,500):
+        if (i%3 == 0) or (i%5 == 0):
+            sum = sum + i
+    return sum
+        
 
 ###############################################################################
 def f09():
+    i = 0
     
+    return sum([i for i in range(1,500) if i % 3 == 0 or i % 5 == 0])
 
 
 
 
 
 ###############################################################################
-def f10():
+def f10(n):
+    
+    if n == 0:
+        return 0
 
-
-
-
+    elif (n%3 == 0) or (n%5 == 0):
+            return (n + f10(n-1))
+    else:
+        n-= 1
+        return f10(n)
 
 
 
@@ -130,7 +168,14 @@ def f10():
 # strings, integers if they started as floats, and as the value 0 if they
 # started as ints.
 def f11(args):
-    
+    if type(args) == type('a'):
+        print float(args)
+    elif type(args) == type(1.0):
+        print int(args)
+    elif type(args) == type(1):
+        print 0
+
+
 
 
 
@@ -148,8 +193,22 @@ def f11(args):
 # Ex. printing
 #   [1.0, 1.3, 2.443]
 def f12():
-    
+#     list1 = []
+#     fo = open("log_file.txt","w")
+#     for i in range(6):
 
+#         l = raw_input("Enter a float value:")
+#         try:
+#             lf = float(l)
+#         list1.append(lf)
+            
+            
+#         except ValueError:
+#             print list1
+#             #fo.write(str(list1[i])+"\n")
+#             continue
+
+   # print list1
 
 
 
@@ -158,7 +217,8 @@ def f12():
 ###############################################################################
 # Fix the error in f13:
 def f13():
-    for each in "string"
+    
+    for each in "string":
         print each
     f14()  # Last line in f13()
 ###############################################################################
@@ -167,7 +227,8 @@ def f13():
 # Ex. /Users/dsg/Desktop/python-boot-camp/HW11/diagnostic.py
 def f14():
     
-
+    print("absolute path: "+os.path.abspath(__file__))
+    print("filename: "+os.path.basename(__file__))
 
 
 
@@ -188,65 +249,65 @@ def f14():
 # [[], [], [], [], [], [], [], [], [], [0]]
 def f15():
 
+    pass
 
 
 
 
-
-    f16([1,2,3],[4,5,6])  # Last line in f15()
+    # f16([1,2,3],[4,5,6])  # Last line in f15()
 ###############################################################################
 # Write f16() that takes two lists and prints a list with the nth elements of 
 # each list sharing a tuple.
 # Ex.
 # [1,2,3] and [4,5,6] would produce [(1, 4), (2, 5), (3, 6)]
 def f16(list1, list2):
-    
+    pass
 
 
 
 
 
-    f17()  # Last line in f16()
+    # f17()  # Last line in f16()
 ###############################################################################
 # Write f17() to take the 2nd line from few_words.txt, and print a list
 # with the index of the word in that line and the word, sharing tuples.
 # Ex. [(0, 'To'), (1, 'be'), (2, 'or'), (3, 'not'), (4, 'to'), (5, 'be')]
 def f17():
     
-
+    pass
 
 
 
     # Be sure to save the list that you print to list_
-    list_ =  list()  # Change to your list 
-    f18(list_)  # Last line in f17()
+    # list_ =  list()  # Change to your list 
+    # f18(list_)  # Last line in f17()
 # Write f18 to take the list above and create a dictionary, use the words as
 # keys and the numbers as values.
 # Print the dictionary.
 # Call the dictionary in f19()
 def f18(list_):
 
+    pass
 
 
 
-
-    f19(d)  # Last line in f18()
+    # f19(d)  # Last line in f18()
 # Write f19 to update that dictionary by changing the values by adding the 
 # number of chars in the word to the current value (if the resulting value
 # would be even), otherwise change the value to the ascii number for the last
 # char in the word. Print the new dictionary.
 def f19(d):
-    
+    pass
 
 
 
-    f22()  # Last line in f19()
+    # f22()  # Last line in f19()
 # Write f21() to find if a word is capitalized. Return True/False.
 # Ex.
 # f21("Yes") = True, f21("NO") = False, 
 # f21("nope") = False, f21("nADA") = False
 def f21(word):
-    
+    pass
 
 
 
@@ -266,16 +327,16 @@ def f21(word):
 def f22():
     
 
+    pass
 
 
 
 
 
 
-
-    f23([["o","o","x"],["x","o","x"],["o","","x"]])  # Last lines in f22()
-    f23([["o","","o"],["x","o","x"],["o","x","x"]])
-    f23([["o","o","x"],["x","x","x"],["o","","o"]])
+    # f23([["o","o","x"],["x","o","x"],["o","","x"]])  # Last lines in f22()
+    # f23([["o","","o"],["x","o","x"],["o","x","x"]])
+    # f23([["o","o","x"],["x","x","x"],["o","","o"]])
 # Write f23() that takes a list of three lists of len 3, and says who won in 
 # tic-tac-toe (you can expect all moves to have been legal, made turn-by-turn)
 # you can expect there is a winner. Print the x or o and the type of win:
@@ -289,7 +350,7 @@ def f23(lists_):
 
 
 
-
+    pass
 
 
 
@@ -304,12 +365,14 @@ def f23(lists_):
 # (three lines)
 def main():
 
-
+    f01()
+    
 
 
 
 
 
 # Write the boilerplate code. (two lines)
-
+if __name__ == '__main__':
+    main()
 
